@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34">
+  <!-- PartnerPlayPro mark: raspberry plate, white "P", tangerine play triangle.
+       The first <rect fill> is read by app/apple-icon.tsx as the background
+       plate, so it must stay the first element. -->
+  <rect width="34" height="34" rx="10" fill="#e62e6b"/>
+  <path d="M11 26V8h7.4a6.2 6.2 0 0 1 0 12.4H11" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M16.6 11.4v5.6l4.6-2.8z" fill="#ff9a1f"/>
+</svg>
