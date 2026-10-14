@@ -111,7 +111,20 @@ export default function BonusCategoryNav({ sections }: { sections: BonusSection[
 
           return (
             <li key={section.id}>
-              <Link href={`/bonuses/${section.slug}`} className="flex h-full w-full min-h-11 items-center justify-center gap-2.5 rounded-full border border-line-soft bg-paper px-5 py-3 text-sm font-semibold text-ink transition-all hover:border-brand hover:text-brand">
+              <Link
+                href={`/bonuses/${section.slug}`}
+                /*
+                 * A FILLED magenta block, not a bordered paper one.
+                 *
+                 * Same reasoning as crogambline: on the washed panel a dark
+                 * chip with a hairline border reads as a cell in a table, and
+                 * the border is the loudest thing in the row. The site's own
+                 * brand, at low alpha, gives each chip a surface instead — so
+                 * the row reads as buttons, and nothing has to be separated by
+                 * a line.
+                 */
+                className="flex h-full w-full min-h-11 items-center gap-2.5 rounded-full bg-[rgba(230,46,107,0.13)] px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-[rgba(230,46,107,0.24)]"
+              >
                 {icon && (
                   /*
                    * A plain <img>, not next/image: the optimizer refuses SVG
@@ -132,10 +145,16 @@ export default function BonusCategoryNav({ sections }: { sections: BonusSection[
                   />
                 )}
 
+                {/* LEFT-aligned, not centred.
+                    With the tracks equal and the contents centred, every chip
+                    put its icon and its label at a different distance from its
+                    own left edge — so the column read as ragged even though the
+                    boxes were identical. Starting them all at the same point is
+                    what makes a set of equal boxes look like a set. */}
                 <span>{section.name}</span>
 
                 {/* Inside the link, as part of what the button says. */}
-                <span className="text-xs text-faint font-semibold tabular-nums">{section.offers_count}</span>
+                <span className="ml-auto text-xs text-muted font-semibold tabular-nums">{section.offers_count}</span>
               </Link>
             </li>
           )
