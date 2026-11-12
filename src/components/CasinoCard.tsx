@@ -14,26 +14,18 @@ function Stars({ rating }: { rating: number }) {
   )
 }
 
-// PartnerPlayPro — ranked review row: a tangerine rank numeral, a prominent brand
+// PartnerPlayPro — review row: a prominent brand
 // logo, then only the three things that matter (name · rating · bonus) and a
 // clear crimson primary CTA. No rank chip, no category clutter.
-export default function CasinoCard({ casino, rank }: { casino: CasinoWithAttachment; rank?: number }) {
+export default function CasinoCard({ casino }: { casino: CasinoWithAttachment; rank?: number }) {
   // Card shows the casino's "Image" (logo), NOT the wide "Banner Image" (that's
   // used big on the single casino page). Falls back to the banner if no Image.
   const image = resolveImageUrl(casino.image_path ?? casino.banner_image)
 
   return (
     <li className="group flex flex-col gap-4 rounded-2xl bg-paper p-5 shadow-[0_10px_30px_rgba(28,36,48,0.07)] transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(28,36,48,0.12)] sm:h-36 sm:flex-row sm:items-center sm:gap-7">
-      {/* Rank numeral + prominent logo */}
+      {/* Prominent logo */}
       <div className="flex items-center gap-4 sm:gap-5">
-        {rank != null && (
-          <span
-            className="w-6 shrink-0 text-center font-display text-3xl font-semibold leading-none tabular-nums text-brand sm:w-8"
-            aria-label={`Rank ${rank}`}
-          >
-            {rank}
-          </span>
-        )}
         <div className="flex-shrink-0">
           {image ? (
             // Directly-sized image (NO `fill`) → renders at exactly 160×96.
